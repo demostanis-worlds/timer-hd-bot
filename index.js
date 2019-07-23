@@ -1,13 +1,14 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
+const memecommand = require("./commands/meme")
 
 require("dotenv").config()
 
 var version = '1.0.1';
 
 bot.on('ready', () =>{
-    console.log('This bot is online!');
-    bot.user.setActivity("aaaa");
+    console.log(`Bot connected as ${bot.user.username}`);
+	bot.user.setActivity("aaaa");
 })
 
 bot.on('message', message=>{
@@ -24,8 +25,11 @@ bot.on('message', message=>{
           .setColor(0xF1C40F)
           .setThumbnail(message.author.avatarURL)
           .setFooter('This person is very gay!')
-          message.channel.sendEmbed(embed);
-        break;
+		  message.channel.sendEmbed(embed);
+		break;
+		
+		case "meme":
+			memecommand.run(null, message, args)
 
 
 

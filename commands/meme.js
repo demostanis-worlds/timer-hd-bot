@@ -25,10 +25,12 @@ module.exports.run = async (bots, message, args) => {
     message.channel.startTyping();
 
     randomPuppy(subreddit).then(url => {
-        fetch.get(url).then(async res => {
+        fetch(url).then(async res => {
+			const img = await res.arrayBuffer()
+
             await message.channel.send({
                 files: [{
-                    attachment: res.boday,
+                    attachment: Buffer.from(img),
                     name: 'meme.png'
                 }]
             }).then(() => message.channel.stopTyping());
@@ -37,7 +39,7 @@ module.exports.run = async (bots, message, args) => {
 
 };
 
-modules.exports.help = {
+module.exports.help = {
     name: 'meme',
     aliases: ['memes']
 }
