@@ -1,4 +1,4 @@
-const randomPuppy = require('ranom-puppy');
+const randomPuppy = require('random-puppy');
 const fetch = require('node-fetch');
 
 module.exports.run = async (bots, message, args) => {
