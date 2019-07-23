@@ -1,9 +1,7 @@
 const Discord = require('discord.js');
 const bot = new Discord.Client();
 
-const token = 'NTk5MjgwNzYyMDYzMTU5MzAw.XTNLjw.xxgEBTi84PCTjb_IiLlwNrbq-mc';
-
-const PREFIX = 't!';
+require("dotenv").config()
 
 var version = '1.0.1';
 
@@ -14,7 +12,7 @@ bot.on('ready', () =>{
 
 bot.on('message', message=>{
 
-    let args = message.content.substring(PREFIX.length).split(" ");
+    let args = message.content.substring(process.env.PREFIX.length).split(" ");
 
     switch(args[0]){
         case 'embed':
@@ -35,4 +33,4 @@ bot.on('message', message=>{
 })
 
 
-bot.login(token);
+bot.login(process.env.TOKEN);

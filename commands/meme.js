@@ -1,5 +1,5 @@
 const randomPuppy = require('ranom-puppy');
-const snekfetch = require('snekfetch');
+const fetch = require('node-fetch');
 
 module.exports.run = async (bots, message, args) => {
 
@@ -25,7 +25,7 @@ module.exports.run = async (bots, message, args) => {
     message.channel.startTyping();
 
     randomPuppy(subreddit).then(url => {
-        snekfetch.get(url).then(async res => {
+        fetch.get(url).then(async res => {
             await message.channel.send({
                 files: [{
                     attachment: res.boday,
